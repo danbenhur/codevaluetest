@@ -1,4 +1,4 @@
-import { Product } from "./components/ProductsList";
+import { Product } from "./store/ProductStore";
 
 export const initialItemsArray: Product[] = [
     {

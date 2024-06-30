@@ -1,33 +1,21 @@
-import React, { useState } from 'react';
+import { observer } from 'mobx-react';
 import styles from './ProductsList.module.css';
-import { initialItemsArray } from '../DummyItems';
 import { ProductsListItem } from './ProductsListItem';
+import { productStore } from '../store/ProductStore';
 
 
-export const ProductsList: React.FC<ProductsListProps> = (props) => {
-const [products,setProducts] =useState(initialItemsArray)
-
+export const ProductsList: React.FC = observer(() => {
+const products = productStore.products
   return (
     <div className={styles.productsList}>
       <p>Items List</p>
         {products.map(product => (
-          <ProductsListItem key={product.id} product={product} onClick={props.onClick} />
+          <ProductsListItem key={product.id} product={product}  />
         ))}
     </div>
   );
-};
+});
 
-export interface Product {
-    id: number;
-    name: string;
-    price: number;
-    creationDate: string; 
-    image: string;
-    description?: string;
-  }
 
-  interface ProductsListProps {
-    onClick: (productId: number) => void;
-  }
   
   

@@ -1,12 +1,14 @@
 import React from 'react';
-import { Product } from './ProductsList';
+import { observer } from 'mobx-react';
+import { Product } from '../store/ProductStore';
+import { productStore } from '../store/ProductStore'; 
+
 import styles from './ProductsListItem.module.css'
 
 
-export const ProductsListItem: React.FC<ProductsListItemProps> = ({ product, onClick }) => {
-
+export const ProductsListItem: React.FC<ProductsListItemProps> = observer(({ product }) => {
 const handleProductWasClicked = () => {
-onClick(product.id)
+productStore.selectedProductId(product.id)
 }
   
   return (
@@ -18,11 +20,10 @@ onClick(product.id)
       </div>
     </div>
   );
-};
+});
 
 interface ProductsListItemProps {
   product: Product;
-  onClick: (productId: number) => void;
 }
 
 
