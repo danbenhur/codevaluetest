@@ -26,7 +26,7 @@ class ProductStore {
     }
 
     @computed get selectedProduct() {
-      return this.products.find(product => product.id === this.selectedItemId) || null;
+      return this.products.find(product => product.id === this.selectedItemId);
     }
   
 
@@ -44,6 +44,14 @@ class ProductStore {
 //   removeProduct(productId: number) {
 //     this.products = this.products.filter(product => product.id !== productId);
 //   }
+
+@action
+updateProduct(updatedProduct: Product) {
+  const index = this.products.findIndex(product => product.id === updatedProduct.id);
+  if (index !== -1) {
+    this.products[index] = updatedProduct;
+  }
+}
 
   @action
   selectedProductId(productId: number) {
