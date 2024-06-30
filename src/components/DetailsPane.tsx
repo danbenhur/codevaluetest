@@ -8,6 +8,18 @@ export const DetailsPane: React.FC = observer(() => {
   const [productDetails, setProductDetails] = useState<Product | undefined>(
     selectedProduct
   );
+  const [isValid, setIsValid] = useState(false);
+  const validateInputs = (product: Product) => {
+    const isValidName = product.name.trim().length > 0;
+    const isValidPrice = product.price > 0;
+    setIsValid(isValidName && isValidPrice);
+  };
+
+  useEffect(() => {
+    if (productDetails) {
+      validateInputs(productDetails);
+    }
+  }, [productDetails]);
 
   useEffect(() => {
     setProductDetails(selectedProduct);
@@ -80,7 +92,7 @@ export const DetailsPane: React.FC = observer(() => {
             {" $"}
           </div>
           <div className={styles.buttonSection}>
-          <button type="submit">Save</button>
+          <button type="submit" disabled={!isValid}>Save</button>
           </div>
         </form>
       </div>
