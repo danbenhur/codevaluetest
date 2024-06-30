@@ -4,10 +4,11 @@ import { ProductsListItem } from "./ProductsListItem";
 import { productStore } from "../store/ProductStore";
 
 export const ProductsList: React.FC = observer(() => {
-  const products = productStore.products;
+
   return (
       <div className={styles.productsList}>
-        {products.map((product) => (
+  
+        {productStore.filteredProducts.map((product) => (
           <ProductsListItem key={product.id} product={product} />
         ))}
       </div>

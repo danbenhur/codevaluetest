@@ -8,6 +8,10 @@ import { Product, productStore } from "../store/ProductStore";
 export const ItemActions: React.FC = observer(() => {
   const [addProductWindowIsOpen, setAddProductWindowIsOpen] = useState(false);
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    productStore.setSearchQuery(event.target.value); // Update search query in ProductStore
+  };
+
   const handleAddProduct = (product: Product) => {
     productStore.addProduct(product); 
   };
@@ -18,7 +22,14 @@ export const ItemActions: React.FC = observer(() => {
       <div className={styles.actionButtonsSpacer}>
         <div className={styles.actionButtons}>
           <button onClick={() => setAddProductWindowIsOpen(true)}>Add</button>
-          <button>Button 2</button>
+       <div className={styles.searchBox}>
+        <input
+          type="text"
+          placeholder="Search by product name"
+          value={productStore.searchQuery}
+          onChange={handleSearchChange}
+        />
+      </div>
           <button>Button 3</button>{" "}
         </div>
       </div>

@@ -1,64 +1,74 @@
-import { observable, action, computed, makeObservable, reaction  } from 'mobx';
-import { initialItemsArray } from '../DummyItems';
+import { observable, action, computed, makeObservable, reaction } from "mobx";
+import { initialItemsArray } from "../DummyItems";
 
 export interface Product {
-    id: number;
-    name: string;
-    price: number;
-    creationDate: string; 
-    image: string;
-    description?: string;
-  }
+  id: number;
+  name: string;
+  price: number;
+  creationDate: string;
+  image: string;
+  description?: string;
+}
 
 class ProductStore {
   @observable products: Product[] = initialItemsArray;
   @observable selectedItemId: number | null = null;
+  @observable searchQuery: string = "";
 
   constructor() {
-    makeObservable(this); 
+    makeObservable(this);
 
     reaction(
-        () => this.selectedItemId,
-        (selectedItemId: number | null) => {
-          console.log('Selected item ID:', selectedItemId);
-        }
-      );
+      () => this.selectedItemId,
+      (selectedItemId: number | null) => {
+        console.log("Selected item ID:", selectedItemId);
+      }
+    );
+  }
+
+  @computed get selectedProduct() {
+    return this.products.find((product) => product.id === this.selectedItemId);
+  }
+
+  @action
+  setSearchQuery(query: string) {
+    this.searchQuery = query;
+  }
+
+  @computed get filteredProducts() {
+    const query = this.searchQuery.trim().toLowerCase();
+    if (!query) {
+      return this.products; // Return all products if no query
     }
+    return this.products.filter((product) =>
+      product.name.toLowerCase().includes(query)
+    );
+  }
 
-    @computed get selectedProduct() {
-      return this.products.find(product => product.id === this.selectedItemId);
-    }
-  
-
-//   @action
-//   setProducts(products: Product[]) {
-//     this.products = products;
-//   }
-
-@action
-addProduct(product: Product) {
-  this.products.push(product);
-}
+  @action
+  addProduct(product: Product) {
+    this.products.push(product);
+  }
 
   @action
   removeProduct(productId: number) {
-    this.products = this.products.filter(product => product.id !== productId);
+    this.products = this.products.filter((product) => product.id !== productId);
   }
 
-@action
-updateProduct(updatedProduct: Product) {
-  const index = this.products.findIndex(product => product.id === updatedProduct.id);
-  if (index !== -1) {
-    this.products[index] = updatedProduct;
+  @action
+  updateProduct(updatedProduct: Product) {
+    const index = this.products.findIndex(
+      (product) => product.id === updatedProduct.id
+    );
+    if (index !== -1) {
+      this.products[index] = updatedProduct;
+    }
   }
-}
 
   @action
   selectedProductId(productId: number) {
     this.selectedItemId = productId;
   }
-
 }
 
 export const productStore = new ProductStore();
- 

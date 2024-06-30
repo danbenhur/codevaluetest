@@ -11,7 +11,6 @@ const AddProductWindow: React.FC<AddProductWindowProps> = ({ onClose, onAddProdu
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Fetch form data
     const formData = new FormData(event.currentTarget);
     const product: Product = {
       id: Math.floor(Math.random() * 1000),
