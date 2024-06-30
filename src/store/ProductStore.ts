@@ -35,10 +35,10 @@ class ProductStore {
 //     this.products = products;
 //   }
 
-//   @action
-//   addProduct(product: Product) {
-//     this.products.push(product);
-//   }
+@action
+addProduct(product: Product) {
+  this.products.push(product);
+}
 
   @action
   removeProduct(productId: number) {
