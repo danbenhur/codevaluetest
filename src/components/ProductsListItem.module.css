@@ -1,10 +1,10 @@
 .product {
   display: flex;
-  align-items: center;
   background: white;
   border-radius: 3px;
   border: 2px solid black;
   position: relative;
+  height: 23%;
 }
 
 .product img {
