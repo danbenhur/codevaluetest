@@ -18,7 +18,6 @@ const App: React.FC = () => {
           <ProductsList />
           <DetailsPane />
         </div>
-        <BottomPagination />
       </div>
     </Provider>
   );
