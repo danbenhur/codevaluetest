@@ -14,6 +14,7 @@ class ProductStore {
   @observable products: Product[] = initialItemsArray;
   @observable selectedItemId: number | null = null;
   @observable searchQuery: string = "";
+  @observable sortBy: 'name' | 'creationDate' = 'name';
 
   constructor() {
     makeObservable(this);
@@ -69,6 +70,31 @@ class ProductStore {
   selectedProductId(productId: number) {
     this.selectedItemId = productId;
   }
+
+  @action
+  setSortBy(sortBy: 'name' | 'creationDate') {
+    console.log(`Dan Setting sort by: ${sortBy}`);
+
+    this.sortBy = sortBy;
+    this.sortProducts(); 
+  }
+
+  @action
+  sortProducts() {
+    console.log(`Dan Sorting products by: ${this.sortBy}`);
+
+    const sortBy = this.sortBy;
+    this.products = this.products.slice().sort((a, b) => {
+      if (sortBy === 'name') {
+        return a.name.localeCompare(b.name);
+      } else {
+        return new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime();
+      }
+    });
+    console.log('Dan Sorted products:', this.products);
+
+  }
+
 }
 
 export const productStore = new ProductStore();

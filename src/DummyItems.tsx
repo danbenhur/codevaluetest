@@ -5,7 +5,8 @@ export const initialItemsArray: Product[] = [
       id: 1,
       name: "Product A",
       price: 29.99,
-      creationDate: "2023-10-15T00:00:00Z",
+      creationDate: "2024-03-12T00:00:00Z",
+
       image: "https://picsum.photos/id/1015/600/400",
       description: "This is the description for Product A. It's a great choice!"
     },
@@ -21,7 +22,8 @@ export const initialItemsArray: Product[] = [
       id: 4,
       name: "Product D",
       price: 59.99,
-      creationDate: "2024-03-12T00:00:00Z",
+      creationDate: "2023-10-15T00:00:00Z",
+
       image: "https://picsum.photos/id/1080/600/400",
       description: "Product D is the latest in technology. Order now!"
     },
