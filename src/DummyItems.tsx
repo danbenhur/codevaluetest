@@ -10,14 +10,6 @@ export const initialItemsArray: Product[] = [
       description: "This is the description for Product A. It's a great choice!"
     },
     {
-      id: 2,
-      name: "Product B",
-      price: 39.99,
-      creationDate: "2023-11-22T00:00:00Z",
-      image: "https://picsum.photos/id/1015/600/400",
-      description: "Product B is perfect for your needs. Buy it now!"
-    },
-    {
       id: 3,
       name: "Product C",
       price: 49.99,
@@ -30,7 +22,7 @@ export const initialItemsArray: Product[] = [
       name: "Product D",
       price: 59.99,
       creationDate: "2024-03-12T00:00:00Z",
-      image: "https://picsum.photos/id/1030/600/400",
+      image: "https://picsum.photos/id/1080/600/400",
       description: "Product D is the latest in technology. Order now!"
     },
     {

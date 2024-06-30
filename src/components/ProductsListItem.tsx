@@ -10,6 +10,10 @@ export const ProductsListItem: React.FC<ProductsListItemProps> = observer(({ pro
 const handleProductWasClicked = () => {
 productStore.selectedProductId(product.id)
 }
+
+const handleDeleteProduct = () => {
+  productStore.removeProduct(product.id)
+}
   
   return (
     <div className={styles.product} onClick={handleProductWasClicked}>
@@ -18,6 +22,9 @@ productStore.selectedProductId(product.id)
         <h2>{product.name}</h2>
       {product.description && <p>{product.description}</p>}
       </div>
+      <div className={styles.deleteButton}>
+          <button onClick={handleDeleteProduct}>Delete</button>
+          </div>
     </div>
   );
 });

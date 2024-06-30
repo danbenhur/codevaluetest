@@ -40,10 +40,10 @@ class ProductStore {
 //     this.products.push(product);
 //   }
 
-//   @action
-//   removeProduct(productId: number) {
-//     this.products = this.products.filter(product => product.id !== productId);
-//   }
+  @action
+  removeProduct(productId: number) {
+    this.products = this.products.filter(product => product.id !== productId);
+  }
 
 @action
 updateProduct(updatedProduct: Product) {

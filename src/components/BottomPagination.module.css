@@ -1,0 +1,11 @@
+.bottomPaginationSpacer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  padding-left: 20px;
+  }
