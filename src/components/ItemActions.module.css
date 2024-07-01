@@ -1,5 +1,5 @@
 .actionButtonsSpacer {
-    height: 50px;
+    height: 64px;
     display: flex;
     align-items: center;
 }
@@ -7,6 +7,7 @@
     display: flex;
     gap: 10px;
     padding-left: 20px;
+    align-items: center;
 }
 .overlay {
     width: 100vw;
@@ -18,3 +19,10 @@
     left: 0;
     z-index: 9999;
 }
+.actionButtons button {
+    background-color: #b6d7a8;
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  }

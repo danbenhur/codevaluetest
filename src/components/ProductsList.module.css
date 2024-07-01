@@ -6,10 +6,8 @@
 }
 
 .productsList {
-  margin: 0 20px;
+  margin: 0 50px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
 }
 

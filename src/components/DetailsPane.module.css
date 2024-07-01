@@ -8,6 +8,8 @@
   font-weight: 800;
   position: relative;
   padding: 0 20px;
+  margin: 0 50px;
+  height: 490px;
 }
 .detailsPane div {
   margin-top: 18px;
@@ -61,4 +63,5 @@
   position: absolute;
   bottom: 15px;
   right: 15px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }

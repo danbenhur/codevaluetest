@@ -7,16 +7,18 @@ interface AddProductWindowProps {
   onAddProduct: (product: Product) => void; 
 }
 
-const AddProductWindow: React.FC<AddProductWindowProps> = ({ onClose, onAddProduct }) => {
+export const AddProductWindow: React.FC<AddProductWindowProps> = ({ onClose, onAddProduct }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
+    const currentDate = new Date().toISOString().split('T')[0];
+
     const product: Product = {
       id: Math.floor(Math.random() * 1000),
       name: formData.get('name') as string,
       price: parseFloat(formData.get('price') as string),
-      creationDate: formData.get('creationDate') as string,
+      creationDate: currentDate,
       image: formData.get('image') as string,
       description: formData.get('description') as string,
     };
@@ -38,9 +40,6 @@ const AddProductWindow: React.FC<AddProductWindowProps> = ({ onClose, onAddProdu
           <label htmlFor="price">Price:</label>
           <input type="number" id="price" name="price" required /><br /><br />
 
-          <label htmlFor="creationDate">Creation Date:</label>
-          <input type="date" id="creationDate" name="creationDate" required /><br /><br />
-
           <label htmlFor="image">Image URL:</label>
           <input type="text" id="image" name="image" required /><br /><br />
 
@@ -55,4 +54,3 @@ const AddProductWindow: React.FC<AddProductWindowProps> = ({ onClose, onAddProdu
   );
 };
 
-export default AddProductWindow;
