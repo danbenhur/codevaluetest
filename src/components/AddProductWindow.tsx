@@ -31,19 +31,19 @@ export const AddProductWindow: React.FC<AddProductWindowProps> = ({ onClose, onA
   return (
     <div className={styles.overlay}>
     <div style={{ backgroundColor: 'white', padding: '52px' }}
-    className={styles.formContainer}>
+    className={styles.addProductForm}>
         <h2>Add Product</h2>
         <form id="productForm" onSubmit={handleSubmit}>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Name: </label>
           <input type="text" id="name" name="name" required /><br /><br />
 
-          <label htmlFor="price">Price:</label>
+          <label htmlFor="price">Price: </label>
           <input type="number" id="price" name="price" required /><br /><br />
 
-          <label htmlFor="image">Image URL:</label>
+          <label htmlFor="image">Image URL: </label>
           <input type="text" id="image" name="image" required /><br /><br />
 
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="description">Description: </label>
           <textarea id="description" name="description"></textarea><br /><br />
 
           <button type="submit" className={styles.addButton}>Add Product</button>
