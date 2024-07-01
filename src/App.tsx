@@ -5,7 +5,6 @@ import { Header } from "./components/Header";
 import { DetailsPane } from "./components/DetailsPane";
 import { ProductsList } from "./components/ProductsList";
 import { ItemActions } from "./components/ItemActions";
-import { BottomPagination } from "./components/BottomPagination";
 
 
 const App: React.FC = () => {

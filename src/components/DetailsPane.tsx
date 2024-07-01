@@ -5,9 +5,7 @@ import { Product, productStore } from "../store/ProductStore";
 
 export const DetailsPane: React.FC = observer(() => {
   const selectedProduct = productStore.selectedProduct;
-  const [productDetails, setProductDetails] = useState<Product | undefined>(
-    selectedProduct
-  );
+  const [productDetails, setProductDetails] = useState<Product | undefined>(selectedProduct || undefined);
   const [isValid, setIsValid] = useState(false);
   const validateInputs = (product: Product) => {
     const isValidName = product.name.trim().length > 0;
@@ -17,7 +15,9 @@ export const DetailsPane: React.FC = observer(() => {
 
   useEffect(() => {
     if (productDetails) {
-      validateInputs(productDetails);
+      const isValidName = productDetails.name.trim().length > 0;
+      const isValidPrice = productDetails.price > 0;
+      setIsValid(isValidName && isValidPrice);
     }
   }, [productDetails]);
 
@@ -64,7 +64,7 @@ export const DetailsPane: React.FC = observer(() => {
             <input
               type="text"
               name="name"
-              value={productDetails?.name}
+              value={productDetails?.name || ""}
               onChange={handleInputChange}
             />
           </div>
@@ -86,7 +86,7 @@ export const DetailsPane: React.FC = observer(() => {
             <input
               type="number"
               name="price"
-              value={productDetails?.price}
+              value={productDetails?.price || ""}
               onChange={handleInputChange}
             />
             {" $"}
