@@ -18,13 +18,6 @@ class ProductStore {
 
   constructor() {
     makeObservable(this);
-
-    reaction(
-      () => this.selectedItemId,
-      (selectedItemId: number | null) => {
-        console.log("Selected item ID:", selectedItemId);
-      }
-    );
   }
 
   @computed get selectedProduct() {
